@@ -220,41 +220,40 @@ void _showChildDetailsModal(ChildInfo child) {
                     ),
                   ],
                 ),
-                child: SafeArea(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: GestureDetector(
-                            onTapDown: (_) {
-                              setState(() => iconScale = 0.85);
-                            },
-                            onTapUp: (_) async {
-                              setState(() => iconScale = 1.0);
-                              await Future.delayed(const Duration(milliseconds: 100));
-                              Navigator.of(context).pop();
-                            },
-                            onTapCancel: () {
-                              setState(() => iconScale = 1.0);
-                            },
-                            child: MouseRegion(
-                              cursor: SystemMouseCursors.click,
-                              child: AnimatedScale(
-                                scale: iconScale,
-                                duration: const Duration(milliseconds: 100),
-                                child: const Icon(
-                                  Icons.close,
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  size: 26,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        const SizedBox(height: 12),
+                child: SingleChildScrollView(
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      // X Button at the very top
+      Align(
+        alignment: Alignment.topRight,
+        child: GestureDetector(
+          onTapDown: (_) {
+            setState(() => iconScale = 0.85);
+          },
+          onTapUp: (_) async {
+            setState(() => iconScale = 1.0);
+            await Future.delayed(const Duration(milliseconds: 100));
+            Navigator.of(context).pop();
+          },
+          onTapCancel: () {
+            setState(() => iconScale = 1.0);
+          },
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: AnimatedScale(
+              scale: iconScale,
+              duration: const Duration(milliseconds: 100),
+              child: const Icon(
+                Icons.close,
+                color: Color.fromARGB(255, 255, 255, 255),
+                size: 26,
+              ),
+            ),
+          ),
+        ),
+      ),
+  
                         Center(
                           child: CircleAvatar(
                             radius: 70,
@@ -352,7 +351,6 @@ void _showChildDetailsModal(ChildInfo child) {
                   ),
                 ),
               ),
-            ),
           );
         },
       );
