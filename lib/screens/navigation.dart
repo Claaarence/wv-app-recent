@@ -78,44 +78,39 @@ class _AppDrawerState extends State<AppDrawer> {
 
 
 
- @override
-Widget build(BuildContext context) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double drawerWidth = screenWidth < 600 ? screenWidth * 0.75 : screenWidth * 0.5;
+  @override
+  Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double drawerWidth = screenWidth < 600 ? screenWidth * 0.75 : screenWidth * 0.5;
 
-  return Drawer(
-    width: drawerWidth,
-    child: Stack(
-      children: [
-        Container(color: const Color(0xFFeb7f35)),
-        SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildHeader(screenWidth),
-                const SizedBox(height: 20),
-                buildDrawerItem(Icons.home, 'Home', const HomePage(), color: Color(0xFFEB7F35)),
-                buildDrawerItem(Icons.person, 'Profile', const ProfilePage(), color: Color(0xFFEB7F35)),
-                buildDrawerItem(Icons.child_care, 'Child', const ChildPage(), color: Color(0xFFEB7F35)),
-                buildDrawerItem(Icons.volunteer_activism, 'Donation', const DonationPage(), color: Color(0xFFEB7F35)),
-                buildDrawerItem(Icons.church, 'Devotion', const DevotionPage(), color: Color(0xFFEB7F35)),
-                buildDrawerItem(Icons.card_giftcard, 'Rewards', const RewardsPage(), color: Color(0xFFEB7F35)),
-                buildDrawerItem(Icons.emoji_events, 'Badges', const BadgesPage(), color: Color(0xFFEB7F35)),
-                buildDrawerItem(Icons.contact_mail, 'Contact Us', const ContactUsPage(), color: Color(0xFFEB7F35)),
-                const SizedBox(height: 20),
-                Divider(color: Colors.white.withOpacity(0.6), thickness: 1),
-                buildDrawerItemSignout(Icons.logout, 'Sign Out', context),
-                const SizedBox(height: 20),
-              ],
-            ),
+    return Drawer(
+      width: drawerWidth,
+      child: Stack(
+        children: [
+          Container(color: const Color(0xFFeb7f35)),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeader(screenWidth),
+              const SizedBox(height: 20),
+              buildDrawerItem(Icons.home, 'Home', const HomePage(), color: Color(0xFFEB7F35)),
+              buildDrawerItem(Icons.person, 'Profile', const ProfilePage(), color: Color(0xFFEB7F35)),
+              buildDrawerItem(Icons.child_care, 'Child', const ChildPage(), color: Color(0xFFEB7F35)),
+              buildDrawerItem(Icons.volunteer_activism, 'Donation', const DonationPage(), color: Color(0xFFEB7F35)),
+              buildDrawerItem(Icons.church, 'Devotion', const DevotionPage(), color: Color(0xFFEB7F35)),
+              buildDrawerItem(Icons.card_giftcard, 'Rewards', const RewardsPage(), color: Color(0xFFEB7F35)),
+              buildDrawerItem(Icons.emoji_events, 'Badges', const BadgesPage(), color: Color(0xFFEB7F35)),
+              buildDrawerItem(Icons.contact_mail, 'Contact Us', const ContactUsPage(), color: Color(0xFFEB7F35)),
+              const Spacer(),
+              Divider(color: Colors.white.withOpacity(0.6), thickness: 1),
+              buildDrawerItemSignout(Icons.logout, 'Sign Out', context),
+              const SizedBox(height: 20),
+            ],
           ),
-        ),
-      ],
-    ),
-  );
-}
-
+        ],
+      ),
+    );
+  }
 
   Widget _buildHeader(double screenWidth) {
     return Container(
