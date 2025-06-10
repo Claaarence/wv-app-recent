@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../screens/child_connect/childvisit.dart';
-import '../../screens/child_connect/communityprofile.dart';
+import 'package:wvmobile/screens/child_connect/childvisit.dart';
+import 'package:wvmobile/screens/child_connect/communityprofile.dart';
 // If you have a ChildInfo model, import it:
-import '../../models/child_info.dart';
-import '../../screens/homescreen/child_details.dart';
-import '../../screens/child_connect/sendletter.dart';
-import '../../screens/child_connect/viewletters.dart';
+import '/models/child_info.dart';
+import 'package:wvmobile/screens/homescreen/child_details.dart';
+import 'package:wvmobile/screens/child_connect/sendletter.dart';
+import 'package:wvmobile/screens/child_connect/viewletters.dart';
 
 class ConnectPage extends StatelessWidget {
   final ChildInfo child;
@@ -26,10 +26,10 @@ class ConnectPage extends StatelessWidget {
       );
       break;
     case 'Send Letter':
-      destination = SendLetterPage(childName: child.givenName);
+      destination = SendLetterPage(childName: child.givenName, childId: child.childId,);
       break;
     case 'View Letters':
-      destination = const ViewLettersPage();
+      destination = ViewLettersPage(childId: child.childId);
       break;
     case 'Child Visit':
       destination = const ChildVisitPage();
