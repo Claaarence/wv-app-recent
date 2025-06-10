@@ -299,7 +299,9 @@ Widget build(BuildContext context) {
   ModalRoute.of(context)?.addScopedWillPopCallback(() async {
       return await showExitConfirmationDialog(context);
     });
-  return Scaffold(
+    return WillPopScope(
+  onWillPop: () => showExitConfirmationDialog(context),
+  child: Scaffold(
     resizeToAvoidBottomInset: true,
     body: Stack(
   fit: StackFit.expand,
@@ -565,6 +567,7 @@ Stack(
         )
       ],
     ),
+  ),
   );
 }
 
