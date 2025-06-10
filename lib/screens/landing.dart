@@ -135,53 +135,53 @@ class _LandingPageState extends State<LandingPage> {
     );
   }
 
-  Widget _buildPage({required String imagePath, required String title, required String description, Alignment imageAlignment = Alignment.center}) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.6,
-            child: Image.asset(
-              imagePath,
-              fit: BoxFit.cover,
-              alignment: imageAlignment,
+ Widget _buildPage({
+  required String imagePath,
+  required String title,
+  required String description,
+  Alignment imageAlignment = Alignment.center,
+}) {
+  return Stack(
+    children: [
+      Positioned.fill(
+        child: Image.asset(
+          imagePath,
+          fit: BoxFit.cover,
+          alignment: imageAlignment,
+        ),
+      ),
+      Positioned.fill(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.black.withOpacity(0.3),
+                Colors.black.withOpacity(0.8),
+              ],
             ),
           ),
         ),
-        Positioned.fill(
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.black.withOpacity(0.3),
-                  Colors.black.withOpacity(0.8),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Text(
+      ),
+      Align(
+        alignment: Alignment.center,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
                 title,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: Colors.white,
                   fontSize: 34,
                   fontWeight: FontWeight.w700,
                 ),
               ),
-            ),
-            const SizedBox(height: 12),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Text(
+              const SizedBox(height: 12),
+              Text(
                 description,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
@@ -189,13 +189,14 @@ class _LandingPageState extends State<LandingPage> {
                   fontSize: 16,
                 ),
               ),
-            ),
-            const Spacer(),
-          ],
+            ],
+          ),
         ),
-      ],
-    );
-  }
+      ),
+    ],
+  );
+}
+
 
   Widget _buildPageIndicator() {
     return Row(
